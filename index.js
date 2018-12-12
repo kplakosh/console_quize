@@ -15,58 +15,40 @@ Question.prototype.print = function() {
     }
 }
 
+Question.prototype.isCorrect = function(element) {
+    return element === this.correctAnswer;
+}
+
 // creating objects for an array
 var question1 = new Question('What do you like most in programming?', 
     ['0: Everything!', '1: Creativity', '2: I don\'t like programing'], 
-    '0: Everything!');
+    '0');
 
 var question2 = new Question('What is the best programing language?', 
     ['0: Java Script', '1: Python', '2: Crypton'], 
-    '0: Java Script');
+    '0');
 
 var question3 = new Question('Inside which HTML element do we put the JavaScript?', 
     ['0: <javascript>', '1: <scripting>', '2: <script>', '3: <js>'],
-    '2: <script>');
+    '2');
 
 // creating an array of question objects
 var questionsArray = [question1, question2, question3];
 
+
+//choosingrundom question and print it to console
 function printRundomQuestion(array) {
     var number = Math.floor(Math.random() * array.length);
-
     array[number].print();
 
-    // for (var i = 0; i <= array.length; i++) {
-    //     var number = Math.random() * 10;
-    //     while (number <= array.length) {
-    //         printQuestion(array[number]);
-    //     } 
-    // }
+    // asking user to enter answer
+    var userAnswer = prompt('Enter number for your answer :');
+
+    // call function to check if the answer is correct
+    if (array[number].isCorrect(userAnswer) == true) {
+        console.log('Correct answer!');
+    } 
 }
 
 printRundomQuestion(questionsArray);
 
-
-
-
-
-// // quize logic
-// function quize(array) {
-    
-//     // question from array of questions
-//     array.forEach(printQuestion(element));
-
-
-//     // accept answer
-//     var answer = Number(window.prompt('Welcome to Quize! If your answer is YES enter 1, if NO enter 0'));
-    
-//     // check if the answer is correct
-//     if (answer === 1) {
-//         score += 1;
-//     } else if (answer === 0) {
-//         score;
-//     } else if ('exit') {
-//         return;
-//     }
-//     console.log('Your score: ' + score);
-// }
